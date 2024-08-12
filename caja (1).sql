@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-08-2024 a las 17:58:23
+-- Tiempo de generación: 12-08-2024 a las 23:49:24
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -43,8 +43,30 @@ CREATE TABLE `egresos` (
 CREATE TABLE `ingresos` (
   `idIngreso` int(11) NOT NULL,
   `monto` decimal(11,2) NOT NULL,
-  `fecha` date NOT NULL
+  `fecha` date NOT NULL,
+  `tipo` varchar(20) NOT NULL,
+  `metodo` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `ingresos`
+--
+
+INSERT INTO `ingresos` (`idIngreso`, `monto`, `fecha`, `tipo`, `metodo`) VALUES
+(11, 5000.00, '2024-08-12', 'Ingreso', 'Efectivo'),
+(12, 6000.00, '2024-08-12', 'Ingreso', 'Efectivo'),
+(13, 5000.00, '2024-08-12', 'Egreso', 'Efectivo'),
+(14, 5000.00, '2024-08-12', 'Ingreso', 'Tarjeta'),
+(15, 5000.00, '2024-08-12', 'Ingreso', 'Efectivo'),
+(16, 6000.00, '2024-08-12', 'Ingreso', 'Efectivo'),
+(17, 9000.00, '2024-08-12', 'Ingreso', 'Efectivo'),
+(18, 5000.00, '2024-08-12', 'Ingreso', 'Efectivo'),
+(19, 800.00, '2024-08-12', 'Ingreso', 'Efectivo'),
+(20, 800.00, '2024-08-12', 'Ingreso', 'Efectivo'),
+(21, 6000.00, '2024-08-12', 'Ingreso', 'Efectivo'),
+(22, 9000.00, '2024-08-12', 'Ingreso', 'Efectivo'),
+(23, 5200.00, '2024-08-12', 'Ingreso', 'Mercado Pago'),
+(24, 50000.00, '2024-08-12', 'Ingreso', 'Efectivo');
 
 --
 -- Índices para tablas volcadas
@@ -76,7 +98,7 @@ ALTER TABLE `egresos`
 -- AUTO_INCREMENT de la tabla `ingresos`
 --
 ALTER TABLE `ingresos`
-  MODIFY `idIngreso` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idIngreso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -19,6 +19,19 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.3.2/mdb.min.css"
     rel="stylesheet"
     />
+    
+<link href="
+https://cdn.jsdelivr.net/npm/toastr@2.1.4/build/toastr.min.css
+" rel="stylesheet">
+<style>
+    .selectXd{
+        width: 100%;
+        padding: 2%;
+        border-radius: 5px;
+        border: 0;
+        background: #e7e7e7;
+    }
+</style>
 </head>
 <body>
     <header>
@@ -55,9 +68,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Ingresos</a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link" href="#">Egresos</a>
-                </li>
+                </li> -->
                 <!-- <li class="nav-item">
                     <a class="nav-link" href="#">Projects</a>
                 </li> -->
@@ -137,10 +150,15 @@
     </header>
     <div class="container">
         <div class="row mt-2">
-            <div class="col-12">
-                <button type="button" class="btn btn-primary" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#modalIngreso">
+            <div class="col-4">
+                <button type="button" class="btn btn-primary" data-mdb-ripple-init  id="btnModalIngreso">
                     Nuevo ingreso
                   </button>
+            </div>
+            <div class="col-8">
+                <div class="form-outline" data-mdb-input-init>
+                    <input type="date" id="search" class="form-control" />
+                </div>
             </div>
         </div>
         <div class="row mt-2">
@@ -148,18 +166,24 @@
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th>hola</th>
-                            <th>hola</th>
-                            <th>hola</th>
+                            <th>Detalle</th>
+                            <th>Fecha</th>
+                            <th>Monto</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>hola</td>
-                            <td>hola</td>
-                            <td>hola</td>
-                        </tr>
+                    <tbody id="tbody">
+                        
                     </tbody>
+                    <footer>
+                        <tr>
+                            <th colspan="2">TOTAL INGRESOS</th>
+                            <th id="ingreso"></th>
+                        </tr>
+                        <tr>
+                            <th colspan="2">TOTAL EGRESOS</th>
+                            <th id="egresos"></th>
+                        </tr>
+                    </footer>
                 </table>
             </div>
         </div>
@@ -186,16 +210,29 @@
                 </div>
                 <div class="modal-body">
                     <div class="row">
+                        <div class="col-12 mb-2">
+                            <select class="selectXd" required name="tipoIngreso">
+                                <option value="Ingreso" selected>Ingreso</option>
+                                <option value="Egreso">Egreso</option>
+                            </select>                        
+                        </div>
+                        <div class="col-12 mb-2">
+                            <select class="selectXd" required name="metodoPago">
+                                <option value="Efectivo" selected>Efectivo</option>
+                                <option value="Tarjeta">Tarjeta</option>
+                                <option value="Mercado Pago">Mercado Pago</option>
+                            </select>                        
+                        </div>
                         <div class="col-12">
                             <div class="form-outline" data-mdb-input-init>
-                                <input type="number" name="monto" id="formControlLg" class="form-control form-control-lg" />
-                                <label class="form-label" for="formControlLg">Ingresar Monto</label>
+                                <input type="number" required name="monto" id="montoIngreso" class="form-control form-control-lg" />
+                                <label class="form-label" for="montoIngreso">Ingresar Monto</label>
                             </div>                          
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-mdb-ripple-init data-mdb-dismiss="modal">Cerrar</button>
+                <button type="button" id="cerrarModalBtn" class="btn btn-secondary" data-mdb-ripple-init data-mdb-dismiss="modal">Cerrar</button>
                 <button type="submit" class="btn btn-primary" data-mdb-ripple-init>Guardar</button>
                 </div>
             </form>
@@ -208,6 +245,10 @@
 
     
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="
+https://cdn.jsdelivr.net/npm/toastr@2.1.4/toastr.min.js
+"></script>
 <!-- MDB -->
 <script
   type="text/javascript"
