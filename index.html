@@ -103,7 +103,7 @@ https://cdn.jsdelivr.net/npm/toastr@2.1.4/build/toastr.min.css
                     class="dropdown-menu dropdown-menu-end"
                     aria-labelledby="navbarDropdownMenuLink"
                 >
-                    <li>
+                    <!-- <li>
                     <a class="dropdown-item" href="#">Some news</a>
                     </li>
                     <li>
@@ -111,7 +111,7 @@ https://cdn.jsdelivr.net/npm/toastr@2.1.4/build/toastr.min.css
                     </li>
                     <li>
                     <a class="dropdown-item" href="#">Something else here</a>
-                    </li>
+                    </li> -->
                 </ul>
                 </div>
                 <!-- Avatar -->
@@ -130,7 +130,7 @@ https://cdn.jsdelivr.net/npm/toastr@2.1.4/build/toastr.min.css
                     class="dropdown-menu dropdown-menu-end"
                     aria-labelledby="navbarDropdownMenuAvatar"
                 >
-                    <li>
+                   <!--  <li>
                     <a class="dropdown-item" href="#">My profile</a>
                     </li>
                     <li>
@@ -138,7 +138,7 @@ https://cdn.jsdelivr.net/npm/toastr@2.1.4/build/toastr.min.css
                     </li>
                     <li>
                     <a class="dropdown-item" href="#">Logout</a>
-                    </li>
+                    </li> -->
                 </ul>
                 </div>
             </div>
@@ -153,6 +153,9 @@ https://cdn.jsdelivr.net/npm/toastr@2.1.4/build/toastr.min.css
             <div class="col-4">
                 <button type="button" class="btn btn-primary" data-mdb-ripple-init  id="btnModalIngreso">
                     Nuevo ingreso
+                  </button>
+                  <button type="button" class="btn btn-primary" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#modalPdf">
+                    PDF
                   </button>
             </div>
             <div class="col-8">
@@ -205,7 +208,7 @@ https://cdn.jsdelivr.net/npm/toastr@2.1.4/build/toastr.min.css
         <div class="modal-content">
             <form id="formularioIngreso">
                 <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">INGRESO</h5>
+                <h5 class="modal-title text-success" id="exampleModalLabel">INGRESO</h5>
                 <button type="button" class="btn-close" data-mdb-ripple-init data-mdb-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -223,17 +226,51 @@ https://cdn.jsdelivr.net/npm/toastr@2.1.4/build/toastr.min.css
                                 <option value="Mercado Pago">Mercado Pago</option>
                             </select>                        
                         </div>
-                        <div class="col-12">
+                        <div class="col-12 mb-2">
                             <div class="form-outline" data-mdb-input-init>
                                 <input type="number" required name="monto" id="montoIngreso" class="form-control form-control-lg" />
                                 <label class="form-label" for="montoIngreso">Ingresar Monto</label>
                             </div>                          
+                        </div>
+                        <div class="col-12">
+                            <div class="form-outline" data-mdb-input-init>
+                                <textarea class="form-control" id="detalle" name="detalle" rows="4"></textarea>
+                                <label class="form-label" for="detalle">Detalle (opcional)</label>
+                            </div>                        
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
                 <button type="button" id="cerrarModalBtn" class="btn btn-secondary" data-mdb-ripple-init data-mdb-dismiss="modal">Cerrar</button>
                 <button type="submit" class="btn btn-primary" data-mdb-ripple-init>Guardar</button>
+                </div>
+            </form>
+        </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="modalPdf" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <form id="formularioPdf">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">PDF</h5>
+                <button type="button" class="btn-close" data-mdb-ripple-init data-mdb-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12 mb-2">
+                            <div class="form-outline" data-mdb-input-init>
+                                <input type="date" required name="fechaPDF" id="fechaPDF" class="form-control form-control-lg" />
+                                <label class="form-label" for="fechaPDF">Ingresar Fecha</label>
+                            </div>                          
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                <button type="button" id="cerrarModalBtnPdf" class="btn btn-secondary" data-mdb-ripple-init data-mdb-dismiss="modal">Cerrar</button>
+                <button type="submit" class="btn btn-primary" data-mdb-ripple-init>Ver PDF</button>
                 </div>
             </form>
         </div>

@@ -3,7 +3,7 @@ require "conn.php";
 $monto=$_POST['monto'];
 
 
-$sql = "INSERT INTO `ingresos`(`monto`, `fecha`,tipo,metodo) VALUES (:m,NOW(),:tipo,:metodo)";
+$sql = "INSERT INTO `ingresos`(`monto`, `fecha`,tipo,metodo,detalle) VALUES (:m,NOW(),:tipo,:metodo,:detalle)";
 
 // Preparar la consulta
 $res = $conn->prepare($sql);
@@ -12,6 +12,7 @@ $res = $conn->prepare($sql);
 $res->bindParam(':m', $monto);
 $res->bindParam(':tipo', $_POST['tipoIngreso']);
 $res->bindParam(':metodo', $_POST['metodoPago']);
+$res->bindParam(':detalle', $_POST['detalle']);
 
 
 if($res->execute()){

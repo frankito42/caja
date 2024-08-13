@@ -10,6 +10,11 @@ document.addEventListener("DOMContentLoaded",async function(event) {
         e.preventDefault()
         await guardarIngreso()
     })
+    document.getElementById("formularioPdf").addEventListener("submit",async (e)=>{
+        e.preventDefault()
+        let fecha=document.getElementById("fechaPDF").value
+        location.href="imprimir.php?fecha="+fecha
+    })
     document.getElementById("btnModalIngreso").addEventListener("click",(e)=>{
         abrirModal()
     })
@@ -60,6 +65,7 @@ async function listarIngresosSearch() {
     dibujar(response)
     
 }
+
 function dibujar(params) {
     let tr=``
     let ingreso=0
@@ -74,9 +80,9 @@ function dibujar(params) {
             color="background:#ffd2d259;"
         }
         tr+=`<tr>
-            <td style="${color}">${element.tipo} ${element.metodo}</td>
+            <td style="${color}">${element.tipo} ${element.metodo} <br><span class="badge badge-primary">${element.detalle}</span></td>
             <td style="${color}">${element.fecha}</td>
-            <td style="${color}">$${formatNumberWithCommas(element.monto)}</td>
+            <td style="${color}"><span class="badge rounded-pill badge-success">$${formatNumberWithCommas(element.monto)}</span></td>
         </tr>`
     });
     if(params.length==0){
